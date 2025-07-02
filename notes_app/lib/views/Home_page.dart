@@ -5,18 +5,12 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Notes App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Notes App'),
-        ),
-        body: const Center(
-          child: Text('Welcome to Notes App!'),
+    return const Scaffold(
+      backgroundColor: Colors.white, // Choose a color that suits you
+      body: Center(
+        child: Text(
+          'Welcome to Notes App',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
     );
