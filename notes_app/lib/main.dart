@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(brightness: Brightness.dark),
 
-      home:   SplashScreen(), // تأكد من استيراد الصفحة الرئيسية بشكل صحيح
+      home:   SplashScreen(),  
     );
   }
 }
