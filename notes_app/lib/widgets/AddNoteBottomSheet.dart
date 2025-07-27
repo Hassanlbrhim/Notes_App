@@ -15,14 +15,13 @@ class AddNoteBottomSheet extends StatelessWidget {
           ),
           CustomTextFiled(
             hintText: "Title",
-            ContentPadding: EdgeInsets.symmetric(vertical: 25, horizontal: 7),
           ),
           SizedBox(
             height: 20,
           ),
           CustomTextFiled(
             hintText: 'Content',
-            ContentPadding: EdgeInsets.symmetric(vertical: 100, horizontal: 7),
+            maxline: 7,
           )
         ],
       ),
