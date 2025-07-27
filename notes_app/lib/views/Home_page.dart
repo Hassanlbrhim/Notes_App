@@ -12,18 +12,20 @@ class NotesApp extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                showModalBottomSheet(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    context: context,
-                    builder: (context) {
-                      return AddNoteBottomSheet();
-                    });
-              },
-              child: Icon(
-                Icons.add,
-              )),
+            backgroundColor: Colors.black,
+            onPressed: () {
+              showModalBottomSheet(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  context: context,
+                  builder: (context) {
+                    return AddNoteBottomSheet();
+                  });
+            },
+            child: Icon(
+              Icons.add,
+            ),
+          ),
           backgroundColor: Colors.black,
           body: NotesViewsBodey(),
         ),
