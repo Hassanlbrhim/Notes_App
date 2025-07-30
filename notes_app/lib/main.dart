@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/views/Home_page.dart';
+
 import 'package:notes_app/views/splash.dart';
 
 void main() {

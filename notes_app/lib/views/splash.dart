@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:notes_app/views/Home_page.dart';
+import 'package:notes_app/navigation/appRoutes.dart';
+
+import 'package:notes_app/views/NotesAppViews.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -54,10 +56,11 @@ class _SplashScreenState extends State<SplashScreen>
   _navigateToHome() async {
     await Future.delayed(
         const Duration(seconds: 8)); // هنا زودنا الوقت قبل التنقل
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const NotesApp()),
-    );
+    Navigator.pushNamed(context, Approutes.NotesAppViews);
+    //pushReplacement(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => const NotesAppViews()),
+    // );
   }
 
   @override
