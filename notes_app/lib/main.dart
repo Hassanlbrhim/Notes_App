@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/navigation/appRoutes.dart';
+import 'package:notes_app/navigation/generatRoutes.dart';
 
 import 'package:notes_app/views/splash.dart';
 
@@ -13,12 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        fontFamily: 'Poppins',
-      ),
-      home: SplashScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          fontFamily: 'Poppins',
+        ),
+        home: SplashScreen(),
+        onGenerateRoute: generateRoute,
+        initialRoute: Approutes.SplashScreen);
   }
 }

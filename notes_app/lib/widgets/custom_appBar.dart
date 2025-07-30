@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/custom_search_icon.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key, required this.Title,required this.icon});
+  const CustomAppbar({super.key, required this.Title, required this.icon});
   final String Title;
   final IconData icon;
   @override
@@ -19,7 +19,7 @@ class CustomAppbar extends StatelessWidget {
         ),
         Spacer(),
         CustomSearchIcon(
-      icon: icon,
+          icon: icon,
         )
       ],
     );

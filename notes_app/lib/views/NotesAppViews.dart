@@ -10,7 +10,7 @@ class NotesAppViews extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
             backgroundColor: priemeryColor,

@@ -9,7 +9,7 @@ _createRoute(Widget page) {
 }
 
 Route generateRoute(settings) {
-  switch (settings.name) {
+  switch (settings.name ) {
     case Approutes.SplashScreen:
       return _createRoute(SplashScreen());
     case Approutes.NotesAppViews:
