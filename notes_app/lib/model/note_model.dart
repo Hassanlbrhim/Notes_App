@@ -6,14 +6,14 @@ class NoteModel extends HiveObject {
   @HiveField(0)
   String title;
   @HiveField(1)
-  String SupTitle;
+  String supTitle;
   @HiveField(2)
   String daet;
   @HiveField(3)
-  String Color;
+  String color;
   NoteModel(
       {required this.title,
-      required this.SupTitle,
+      required this.supTitle,
       required this.daet,
-      required this.Color});
+      required this.color});
 }
