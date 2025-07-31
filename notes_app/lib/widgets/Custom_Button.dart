@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
     this.onTap,
     required this.text,
   });
-  VoidCallback? onTap;
+  void Function()? onTap;
   final String text;
 
   @override

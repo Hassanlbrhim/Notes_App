@@ -7,33 +7,74 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            CustomTextFiled(
-              hintText: "Title",
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomTextFiled(
-              hintText: 'Content',
-              maxline: 7,
-            ),
-            SizedBox(
-              height: 65,
-            ),
-            CustomButton(text: "Add"),
-            SizedBox(
-              height: 16,
-            ),
-          ],
-        ),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
+    super.key,
+  });
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formkey = GlobalKey();
+  // المفتاح الخاص بالتحقق
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? Title, subTitle;
+  //بيظهر حاله الايرور بتاعى
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formkey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          CustomTextFiled(
+            onsaved: (value) {
+              Title = value;
+            },
+            hintText: "Title",
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          CustomTextFiled(
+            onsaved: (value) {
+              subTitle = value;
+            },
+            hintText: 'Content',
+            maxline: 7,
+          ),
+          SizedBox(
+            height: 65,
+          ),
+          CustomButton(
+            onTap: () {
+              if (formkey.currentState!.validate()) {
+                formkey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+            text: "Add",
+          ),
+          SizedBox(
+            height: 16,
+          ),
+        ],
       ),
     );
   }
