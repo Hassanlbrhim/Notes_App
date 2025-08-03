@@ -6,9 +6,11 @@ class CustomButton extends StatelessWidget {
     super.key,
     this.onTap,
     required this.text,
+    this.isloding = false,
   });
   void Function()? onTap;
   final String text;
+  final bool isloding;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +24,22 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.w500, fontSize: 20),
-          ),
+          child: isloding
+              ? SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: CircularProgressIndicator(
+                    
+                    color: Colors.black,
+                  ),
+                )
+              : Text(
+                  text,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20),
+                ),
         ),
       ),
     );
