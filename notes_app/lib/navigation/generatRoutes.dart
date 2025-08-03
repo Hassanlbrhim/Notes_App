@@ -15,10 +15,12 @@ Route generateRoute(settings) {
     case Approutes.SplashScreen:
       return _createRoute(SplashScreen());
     case Approutes.NotesAppViews:
-      return _createRoute(BlocProvider(
-        create: (context) => AddNoteCubit(),
-        child: NotesAppViews(),
-      ));
+      return _createRoute(
+        BlocProvider(
+          create: (context) => AddNoteCubit(),
+          child: NotesAppViews(),
+        ),
+      );
     case Approutes.Editnotesviews:
       return _createRoute(Editnotesviews());
 
