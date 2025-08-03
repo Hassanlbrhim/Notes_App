@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/add_note_cubit/cubit/add_note_cubit.dart';
+import 'package:notes_app/model/note_model.dart';
 import 'package:notes_app/widgets/CustomTextFiled.dart';
 import 'package:notes_app/widgets/Custom_Button.dart';
 
@@ -15,7 +18,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formkey = GlobalKey();
   // المفتاح الخاص بالتحقق
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? Title, subTitle;
+  String? title, subTitle;
   //بيظهر حاله الايرور بتاعى
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
           CustomTextFiled(
             onsaved: (value) {
-              Title = value;
+              title = value;
             },
             hintText: "Title",
           ),
@@ -50,6 +53,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onTap: () {
               if (formkey.currentState!.validate()) {
                 formkey.currentState!.save();
+                var noteModule = NoteModel(
+                    title: title!,
+                    supTitle: subTitle!,
+                    daet: DateTime.now().toString(),
+                    color: Colors.green.toString());
+                BlocProvider.of<AddNoteCubit>(context).addNot(noteModule);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
