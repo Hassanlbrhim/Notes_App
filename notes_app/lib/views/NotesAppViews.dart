@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/constant.dart';
+import 'package:notes_app/cubit/note_cubit/note_cubit.dart';
 import 'package:notes_app/widgets/AddNoteBottomSheet.dart';
 import 'package:notes_app/widgets/notes_views_bodey.dart';
 
@@ -11,26 +13,29 @@ class NotesAppViews extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Scaffold(
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: priemeryColor,
-            onPressed: () {
-              showModalBottomSheet(
-                  isScrollControlled: true,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  context: context,
-                  builder: (context) {
-                    return AddNoteBottomSheet();
-                  });
-            },
-            child: Icon(
-              Icons.add,
-              color: Colors.black,
+        child: BlocProvider(
+          create: (context) =>NoteCubit(),
+          child: Scaffold(
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: priemeryColor,
+              onPressed: () {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    context: context,
+                    builder: (context) {
+                      return AddNoteBottomSheet();
+                    });
+              },
+              child: Icon(
+                Icons.add,
+                color: Colors.black,
+              ),
             ),
+            backgroundColor: Colors.black,
+            body: NotesViewsBodey(),
           ),
-          backgroundColor: Colors.black,
-          body: NotesViewsBodey(),
         ),
       ),
     );

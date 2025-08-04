@@ -6,3 +6,8 @@ abstract class NoteState {}
 class NoteInitial extends NoteState {}
 
 class NoteLoding extends NoteState {}
+
+class NoteSucess extends NoteState {
+
+  
+}

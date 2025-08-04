@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
-
+import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/constant.dart';
+import 'package:notes_app/cubit/note_cubit/note_cubit.dart';
 import 'package:notes_app/model/note_model.dart';
 import 'package:notes_app/navigation/appRoutes.dart';
 import 'package:notes_app/navigation/generatRoutes.dart';
@@ -18,7 +19,9 @@ void main() async {
 
   Hive.registerAdapter(NoteModelAdapter());
 
-  await Hive.openBox<NoteModel>(knoteBox);
+  // await Hive.deleteBoxFromDisk(
+  //     knoteBox); // ✅ احذف بيانات الصندوق (اختياري للتجربة فقط)
+  await Hive.openBox<NoteModel>(knoteBox); // ✅ افتح الصندوق
 
   runApp(const MyApp());
 }
@@ -28,15 +31,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        fontFamily: 'Poppins',
+    return BlocProvider(
+      create: (context) => NoteCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          fontFamily: 'Poppins',
+        ),
+        home: const SplashScreen(),
+        onGenerateRoute: generateRoute,
+        initialRoute: Approutes.SplashScreen,
       ),
-      home: const SplashScreen(),
-      onGenerateRoute: generateRoute,
-      initialRoute: Approutes.SplashScreen,
     );
   }
 }
