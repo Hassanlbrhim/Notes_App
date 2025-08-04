@@ -5,15 +5,20 @@ part 'note_model.g.dart';
 class NoteModel extends HiveObject {
   @HiveField(0)
   String title;
+
   @HiveField(1)
   String supTitle;
+
   @HiveField(2)
-  String daet;
+  DateTime date; // ✅ غيرت النوع من String إلى DateTime
+
   @HiveField(3)
   String color;
-  NoteModel(
-      {required this.title,
-      required this.supTitle,
-      required this.daet,
-      required this.color});
+
+  NoteModel({
+    required this.title,
+    required this.supTitle,
+    required this.date, // ✅ بقى تاريخ حقيقي
+    required this.color,
+  });
 }

@@ -1,10 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:notes_app/model/note_model.dart';
 import 'package:notes_app/navigation/appRoutes.dart';
 import 'package:notes_app/widgets/date_display_widget.dart';
 
 class CustomItem extends StatelessWidget {
-  const CustomItem({super.key});
+  CustomItem({
+    Key? key,
+    required this.note,
+  }) : super(key: key);
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +31,7 @@ class CustomItem extends StatelessWidget {
             Expanded(
               child: ListTile(
                 title: Text(
-                  'Hello hassan  ',
+                  note.title,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25,
@@ -35,7 +42,7 @@ class CustomItem extends StatelessWidget {
                     top: 16,
                   ),
                   child: Text(
-                    "builed  your app by hassan v builed   your app by hassan builed   your app by hassan builed   your app by hassan",
+                    note.supTitle,
                     style: TextStyle(
                       color: Colors.black.withOpacity(0.6),
                     ),
@@ -51,7 +58,13 @@ class CustomItem extends StatelessWidget {
                 ),
               ),
             ),
-            DatePickerWidget(),
+            DatePickerWidget(
+              initialDate: note.date,
+              onDateSelected: (selectedDate) {
+                note.date = selectedDate;
+                // هنا لازم تحفظ التعديل في قاعدة البيانات (Hive أو SQLite مثلاً)
+              },
+            ),
           ],
         ),
       ),
