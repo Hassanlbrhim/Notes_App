@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/cubit/note_cubit/note_cubit.dart';
+
 import 'package:notes_app/navigation/appRoutes.dart';
 import 'package:notes_app/views/NotesAppViews.dart';
 import 'package:notes_app/views/editNotesViews.dart';
@@ -16,7 +17,10 @@ Route generateRoute(settings) {
       return _createRoute(SplashScreen());
     case Approutes.NotesAppViews:
       return _createRoute(
-        NotesAppViews(),
+        BlocProvider(
+          create: (context) => NoteCubit(),
+          child: NotesAppViews(),
+        ),
       );
     case Approutes.Editnotesviews:
       return _createRoute(Editnotesviews());
