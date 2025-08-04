@@ -24,7 +24,9 @@ class CustomItem extends StatelessWidget {
         width: 350,
         height: 250,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16), color: Color(0xffFFCD7A)),
+          color: Color(note.color),
+          borderRadius: BorderRadius.circular(16),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -62,7 +64,6 @@ class CustomItem extends StatelessWidget {
               initialDate: note.date,
               onDateSelected: (selectedDate) {
                 note.date = selectedDate;
-                // هنا لازم تحفظ التعديل في قاعدة البيانات (Hive أو SQLite مثلاً)
               },
             ),
           ],

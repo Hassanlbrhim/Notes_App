@@ -13,7 +13,7 @@ class NoteModel extends HiveObject {
   DateTime date; // ✅ غيرت النوع من String إلى DateTime
 
   @HiveField(3)
-  String color;
+  int color;
 
   NoteModel({
     required this.title,
