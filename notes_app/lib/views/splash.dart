@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 8));
-   Navigator.pushNamed(context, Approutes.NotesAppViews);
+    Navigator.pushNamed(context, Approutes.NotesAppViews);
   }
 
   @override
@@ -73,8 +73,8 @@ class _SplashScreenState extends State<SplashScreen>
             gradient: LinearGradient(
               colors: [
                 Color(0xFF000000),
-                Color(0xFF111111),
-                Color(0xFF222222),
+                Color(0xFF000000),
+                Color(0xFF000000),
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
