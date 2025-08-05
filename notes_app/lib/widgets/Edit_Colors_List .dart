@@ -1,23 +1,28 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/constant.dart';
-import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
-
+import 'package:notes_app/model/note_model.dart';
 import 'package:notes_app/widgets/Colors_Paleet.dart';
 
-class ColorListViwes extends StatefulWidget {
-  const ColorListViwes({
+class EditColorsList extends StatefulWidget {
+  EditColorsList({
     Key? key,
+    required this.note,
   }) : super(key: key);
+  final NoteModel note;
 
   @override
-  State<ColorListViwes> createState() => _ColorListViwesState();
+  State<EditColorsList> createState() => _EditColorsListState();
 }
 
-class _ColorListViwesState extends State<ColorListViwes> {
-  int colorindex = 0;
-  
+class _EditColorsListState extends State<EditColorsList> {
+  late int colorindex;
+  @override
+  void initState() {
+    colorindex = noteColors.indexOf(Color(widget.note.color));
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -31,8 +36,7 @@ class _ColorListViwesState extends State<ColorListViwes> {
             child: GestureDetector(
               onTap: () {
                 colorindex = index;
-                BlocProvider.of<AddNoteCubit>(context).color =
-                    noteColors[index];
+                widget.note.color = noteColors[index].value;
                 setState(() {});
               },
               child: ColorsPaleet(
