@@ -16,7 +16,6 @@ class AddNoteBottomSheet extends StatelessWidget {
       create: (context) => AddNoteCubit(),
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
-          // if (state is AddNoteFailuer) {}
           if (state is AddNoteSucess) {
             BlocProvider.of<NoteCubit>(context).fetchAllNotes();
             Navigator.pushNamed(context, Approutes.NotesAppViews);

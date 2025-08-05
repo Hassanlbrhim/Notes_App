@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/cubit/note_cubit/note_cubit.dart';
+
+import 'package:notes_app/model/note_model.dart';
 
 import 'package:notes_app/navigation/appRoutes.dart';
 import 'package:notes_app/views/NotesAppViews.dart';
@@ -20,7 +20,10 @@ Route generateRoute(settings) {
         NotesAppViews(),
       );
     case Approutes.Editnotesviews:
-      return _createRoute(Editnotesviews());
+      final note = settings.arguments as NoteModel;
+      return _createRoute(Editnotesviews(
+        note: note,
+      ));
 
     default:
       return _createRoute(SizedBox());

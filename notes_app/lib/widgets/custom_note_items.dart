@@ -9,17 +9,21 @@ import 'package:notes_app/navigation/appRoutes.dart';
 import 'package:notes_app/widgets/date_display_widget.dart';
 
 class CustomItem extends StatelessWidget {
-  CustomItem({
-    Key? key,
+  const CustomItem({
+    super.key,
     required this.note,
-  }) : super(key: key);
+  });
   final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Approutes.Editnotesviews);
+        Navigator.pushNamed(
+          context,
+          Approutes.Editnotesviews,
+          arguments: note,
+        );
       },
       child: Container(
         padding: EdgeInsets.only(top: 24, bottom: 10, left: 12),
