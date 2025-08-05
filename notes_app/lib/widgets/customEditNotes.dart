@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
- 
 import 'package:notes_app/cubit/note_cubit/note_cubit.dart';
 import 'package:notes_app/model/note_model.dart';
- 
+
 import 'package:notes_app/widgets/CustomTextFiled.dart';
 import 'package:notes_app/widgets/Edit_Colors_List%20.dart';
 import 'package:notes_app/widgets/custom_appBar.dart';
+import 'package:notes_app/widgets/show_Success_Dialog.dart';
 
 class Customeditnotes extends StatefulWidget {
   const Customeditnotes({
@@ -38,7 +38,7 @@ class _CustomeditnotesState extends State<Customeditnotes> {
 
             widget.note.save();
             BlocProvider.of<NoteCubit>(context).fetchAllNotes();
-            Navigator.pop(context);
+            showCustomDialog(context, "Note Edit Successfully ✅");
           },
           Title: "Edit Note",
           icon: Icons.check,
@@ -70,4 +70,3 @@ class _CustomeditnotesState extends State<Customeditnotes> {
     );
   }
 }
-

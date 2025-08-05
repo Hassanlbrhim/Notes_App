@@ -109,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen>
               FadeTransition(
                 opacity: _sloganFade,
                 child: const Text(
-                  'Write & organize freely',
+                  'Write & Start Note',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.white70,
