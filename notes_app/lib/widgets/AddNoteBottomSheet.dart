@@ -18,7 +18,8 @@ class AddNoteBottomSheet extends StatelessWidget {
         listener: (context, state) {
           if (state is AddNoteSucess) {
             BlocProvider.of<NoteCubit>(context).fetchAllNotes();
-            Navigator.pushNamed(context, Approutes.NotesAppViews);
+
+            Navigator.pop(context);
           }
         },
         builder: (context, state) {
@@ -29,7 +30,9 @@ class AddNoteBottomSheet extends StatelessWidget {
                   left: 16,
                   right: 16,
                   bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: SingleChildScrollView(child: AddNoteForm()),
+              child: SingleChildScrollView(
+                child: AddNoteForm(),
+              ),
             ),
           );
         },
